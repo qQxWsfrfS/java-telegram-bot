@@ -11,7 +11,10 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.message.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
+import tg.example.service.UpdateProducer;
 import tg.example.utils.MessageUtils;
+
+import static tg.example.model.RabbitQueue.*;
 
 @Component
 @Log4j
@@ -19,8 +22,10 @@ public class UpdateController {
 
     @Value("${bot.token}")
     private String botToken;
-
     private TelegramClient telegramClient;
+
+    @Autowired
+    private UpdateProducer updateProducer;
 
     @Autowired
     private MessageUtils messageUtils;
@@ -66,21 +71,24 @@ public class UpdateController {
     private void processPhotoMessage(Update update) {
         SendMessage message = messageUtils.generateSendMessageWithText(update,
                 "Пришло фото");
-        setView(message);
+        updateProducer.produce(PHOTO_MESSAGE_UPDATE, update);
+        //setView(message);
         
     }
 
     private void processDocumentMessage(Update update) {
         SendMessage message = messageUtils.generateSendMessageWithText(update,
                 "Пришел документ");
-        setView(message);
+        updateProducer.produce(DOC_MESSAGE_UPDATE, update);
+        //setView(message);
 
     }
 
     private void processTextMessage(Update update) {
         SendMessage message = messageUtils.generateSendMessageWithText(update,
                 "Текстовое сообщение");
-        setView(message);
+        updateProducer.produce(TEXT_MESSAGE_UPDATE,update);
+        //setView(message);
     }
 
     private void setView(SendMessage sendMessage){

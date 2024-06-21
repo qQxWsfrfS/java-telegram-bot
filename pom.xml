@@ -23,7 +23,8 @@
 	</developers>
 	<modules>
 		<module>dispatcher</module>
-	</modules>
+        <module>common-rabitmq</module>
+    </modules>
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -51,6 +52,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+
 		</dependency>
 	</dependencies>
 

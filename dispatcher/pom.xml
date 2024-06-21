@@ -39,6 +39,11 @@
             <artifactId>telegrambots-client</artifactId>
             <version>7.4.2</version>
         </dependency>
+        <dependency>
+            <groupId>tg.example</groupId>
+            <artifactId>common-rabitmq</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

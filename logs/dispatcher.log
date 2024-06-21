@@ -50,3 +50,63 @@
 2024-06-20 01:07:56 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@c4ac58f
 2024-06-20 01:08:07 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@c4ac58f
 2024-06-20 01:08:08 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@c4ac58f
+2024-06-22 00:27:46 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 00:27:53 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@6b76fa52
+2024-06-22 00:45:13 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@6b76fa52
+2024-06-22 00:46:59 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@6b76fa52
+2024-06-22 00:47:04 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@6b76fa52
+2024-06-22 00:47:04 ERROR UpdateController:42 - Received unsupported message type Update(updateId=686631218, message=null, inlineQuery=null, chosenInlineQuery=null, callbackQuery=null, editedMessage=Message(messageId=34, messageThreadId=null, from=User(id=6249885470, firstName=YYYY, isBot=false, lastName=null, userName=ctctctctcte, languageCode=ru, canJoinGroups=null, canReadAllGroupMessages=null, supportInlineQueries=null, isPremium=null, addedToAttachmentMenu=null, canConnectToBusiness=null), date=1719006419, chat=Chat(id=6249885470, type=private, title=null, firstName=YYYY, lastName=null, userName=ctctctctcte, isForum=null), forwardFrom=null, forwardFromChat=null, forwardDate=null, text=/startdsa, entities=[MessageEntity(type=bot_command, offset=0, length=9, url=null, user=null, language=null, customEmojiId=null, text=/startdsa)], captionEntities=null, audio=null, document=null, photo=null, sticker=null, video=null, contact=null, location=null, venue=null, animation=null, pinnedMessage=null, newChatMembers=[], leftChatMember=null, newChatTitle=null, newChatPhoto=null, deleteChatPhoto=null, groupchatCreated=null, replyToMessage=null, voice=null, caption=null, superGroupCreated=null, channelChatCreated=null, migrateToChatId=null, migrateFromChatId=null, editDate=1719006424, game=null, forwardFromMessageId=null, invoice=null, successfulPayment=null, videoNote=null, authorSignature=null, forwardSignature=null, mediaGroupId=null, connectedWebsite=null, passportData=null, forwardSenderName=null, poll=null, replyMarkup=null, dice=null, viaBot=null, senderChat=null, proximityAlertTriggered=null, messageAutoDeleteTimerChanged=null, isAutomaticForward=null, hasProtectedContent=null, webAppData=null, videoChatStarted=null, videoChatEnded=null, videoChatParticipantsInvited=null, videoChatScheduled=null, isTopicMessage=null, forumTopicCreated=null, forumTopicClosed=null, forumTopicReopened=null, forumTopicEdited=null, generalForumTopicHidden=null, generalForumTopicUnhidden=null, writeAccessAllowed=null, hasMediaSpoiler=null, userShared=null, chatShared=null, story=null, externalReplyInfo=null, forwardOrigin=null, linkPreviewOptions=null, quote=null, usersShared=null, giveawayCreated=null, giveaway=null, giveawayWinners=null, giveawayCompleted=null, replyToStory=null, boostAdded=null, senderBoostCount=null, businessConnectionId=null, senderBusinessBot=null, isFromOffline=null, chatBackgroundSet=null, effectId=null, showCaptionAboveMedia=null), channelPost=null, editedChannelPost=null, shippingQuery=null, preCheckoutQuery=null, poll=null, pollAnswer=null, myChatMember=null, chatMember=null, chatJoinRequest=null, messageReaction=null, messageReactionCount=null, chatBoost=null, removedChatBoost=null, businessConnection=null, businessMessage=null, editedBuinessMessage=null, deletedBusinessMessages=null)
+2024-06-22 01:15:24 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 01:15:33 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@5be6d3b9
+2024-06-22 01:17:56 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 01:18:02 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@20e22c7c
+2024-06-22 01:18:02 DEBUG UpdateProducerImpl:22 - fdfd
+2024-06-22 01:29:48 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 01:59:48 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 02:00:07 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 02:00:39 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@57fccc4e
+2024-06-22 02:00:39 DEBUG UpdateProducerImpl:22 - fd
+2024-06-22 02:04:13 DEBUG TelegramBot:35 - Bot is running
+2024-06-22 02:04:30 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@5be6d3b9
+2024-06-22 02:04:30 DEBUG UpdateProducerImpl:22 - fds
+2024-06-22 02:07:34 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@5be6d3b9
+2024-06-22 02:07:34 DEBUG UpdateProducerImpl:22 - Если в этой части кода я отправляю сообщения в брокер, и указываю название только одной очереди: @Override
+    public void produce(String rabbitQueue, Update update) {
+        log.debug(update.getMessage().getText());
+        rabbitTemplate.convertAndSend(rabbitQueue, update);
+    }
+} То как из моего файла конфигурации, при отправке этого сообщения создаются остальные 3 очереди:  @Configuration
+public class RabbitConfiguration {
+    @Bean
+    public MessageConverter jsonMessageConverter(){
+        return new Jackson2JsonMessageConverter();
+    }
+
+    @Bean
+    public Queue textMessageQueue(){
+        System.out.println("bean created");
+        return new Queue(TEXT_MESSAGE_UPDATE);
+    }
+
+    @Bean
+    public Queue docMessageQueue(){
+        System.out.println("bean created");
+        return new Queue(DOC_MESSAGE_UPDATE);
+    }
+
+    @Bean
+    public Queue photoMessageQueue(){
+        System.out.println("bean created");
+        return new Queue(PHOTO_MESSAGE_UPDATE);
+    }
+
+    @Bean
+    public Queue answerMessageQueue(){
+        System.out.println("bean created");
+        return new Queue(ANSWER_MESSAGE);
+    }
+
+
+
+
+} Я не понимаю на каком именно этапе создаются, остальные очереди. Объясни пожалуйста как можно подробнее
