@@ -110,3 +110,14 @@ public class RabbitConfiguration {
 
 
 } Я не понимаю на каком именно этапе создаются, остальные очереди. Объясни пожалуйста как можно подробнее
+2024-06-23 17:23:41 DEBUG TelegramBot:35 - Bot is running
+2024-06-23 17:44:03 DEBUG TelegramBot:35 - Bot is running
+2024-06-23 17:44:10 DEBUG TelegramBot:35 - Bot is running
+2024-06-23 17:44:48 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@68b93790
+2024-06-23 17:44:48 DEBUG UpdateProducerImpl:22 - frefd
+2024-06-23 17:44:53 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@68b93790
+2024-06-23 17:44:53 DEBUG UpdateProducerImpl:22 - привт
+2024-06-23 17:44:55 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@68b93790
+2024-06-23 17:44:55 DEBUG UpdateProducerImpl:22 - Привет
+2024-06-23 17:48:04 DEBUG TelegramBot:42 - tg.example.controller.UpdateController@68b93790
+2024-06-23 17:48:04 DEBUG UpdateProducerImpl:22 - Ghb

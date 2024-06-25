@@ -91,7 +91,7 @@ public class UpdateController {
         //setView(message);
     }
 
-    private void setView(SendMessage sendMessage){
+    public void setView(SendMessage sendMessage){
         try {
             telegramClient.execute(sendMessage);
         } catch (TelegramApiException ex){
